@@ -8,14 +8,15 @@
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Main, Login, Signup } from './components/screens';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { Start, Login, Signup, Main, Browse, More } from './screens';
 
-const AppNavigator = createStackNavigator(
+const InitialNavigator = createStackNavigator(
   {
-    Main: {
-      screen: Main,
+    Start: {
+      screen: Start,
       navigationOptions: {
-        title: 'Main'
+        title: 'Name APP'
       }
     },
     Login: {
@@ -32,8 +33,45 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
+    initialRouteName: 'Start',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#111',
+      },
+      headerTintColor: '#ffe',
+      headerTitleStyle: {
+        fontSize: 24,
+        fontWeight: '400'
+      }
+    }
+  }
+);
+
+const MainNavigation = createBottomTabNavigator(
+  {
+    Main: {
+      screen: Main
+    },
+    Browse: {
+      screen: Browse
+    },
+    More: {
+      screen: More
+    }
+  }, 
+  {
     initialRouteName: 'Main',
   }
-)
+);
 
-export default createAppContainer(AppNavigator);
+const RootNavigator = createStackNavigator(
+  {
+    InitialNavigator: InitialNavigator,
+    MainNavigation: MainNavigation
+  },
+  {
+    headerMode: 'none',
+  }
+);
+
+export default createAppContainer(RootNavigator);

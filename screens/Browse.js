@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, StatusBar, View, Text } from 'react-native';
 
-const Login = () => {
+const Browse = () => {
     return (
         <>
             <StatusBar barStyle="dark-content" />
             <View style={styles.view}>
-                <Text style={styles.text}>LOGIN</Text>
+              <Text>BROWSE</Text>
             </View>
         </>
     );
@@ -18,10 +18,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#777',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    text: {
-        fontSize: 30,
-    },
+      },
 });
 
-export default Login;
+export default Browse;
